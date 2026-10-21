@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Fieldstone Property Management — Test Site</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <p class="test-banner">Test site. This page is for testing only. It is not a real property management company, and nothing you submit is saved or sent.</p>
+  <header class="site-header">
+    <a class="logo" href="index.html">Fieldstone</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#why">Why us</a>
+      <a href="index.html#how">How it works</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Contact</p>
+      <h1>Tell us about the property you want to rent out.</h1>
+      <p class="lead">This is a test page. Messages stay in the browser and are not delivered.</p>
+    </section>
+
+    <section class="panel">
+      <div class="cards">
+        <article>
+          <h3>Email</h3>
+          <p>hello@example.com</p>
+        </article>
+        <article>
+          <h3>Phone</h3>
+          <p>(555) 010-0199</p>
+        </article>
+        <article>
+          <h3>Hours</h3>
+          <p>Weekdays, 9am to 5pm. Test hours only.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel alt">
+      <h2>Send a test message</h2>
+      <form id="contact-form">
+        <label>
+          Your name
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="button" type="submit">Send message</button>
+        <p id="thanks" class="thanks" hidden>Test only. This form does not send or save anything.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Fieldstone Property Management — test site only</p>
+  </footer>
+
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      document.getElementById("thanks").hidden = false;
+      event.currentTarget.reset();
+    });
+  </script>
+</body>
+</html>
