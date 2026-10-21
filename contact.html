@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <p class="test-banner">Test site. This page is for testing only. It is not a real property management company, and nothing you submit is saved or sent.</p>
+  <p class="test-banner">Test site. This page is for testing only. It is not a real property management company. Form submissions are sent to this site’s Netlify form inbox.</p>
   <header class="site-header">
     <a class="logo" href="index.html">Fieldstone</a>
     <nav>
@@ -22,7 +22,7 @@
     <section class="hero">
       <p class="eyebrow">Contact</p>
       <h1>Tell us about the property you want to rent out.</h1>
-      <p class="lead">This is a test page. Messages stay in the browser and are not delivered.</p>
+      <p class="lead">This is a test page. Messages are delivered to this site’s Netlify form inbox.</p>
     </section>
 
     <section class="panel">
@@ -44,7 +44,11 @@
 
     <section class="panel alt">
       <h2>Send a test message</h2>
-      <form id="contact-form">
+      <form name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p hidden>
+          <label>Don’t fill this out <input name="bot-field"></label>
+        </p>
         <label>
           Your name
           <input type="text" name="name" required>
@@ -58,7 +62,8 @@
           <textarea name="message" rows="5" required></textarea>
         </label>
         <button class="button" type="submit">Send message</button>
-        <p id="thanks" class="thanks" hidden>Test only. This form does not send or save anything.</p>
+        <p class="thanks" data-thanks hidden>Sent. This test submission was delivered.</p>
+        <p class="form-error" data-error hidden>Could not send the form. Please try again.</p>
       </form>
     </section>
   </main>
@@ -67,12 +72,6 @@
     <p>Fieldstone Property Management — test site only</p>
   </footer>
 
-  <script>
-    document.getElementById("contact-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-      document.getElementById("thanks").hidden = false;
-      event.currentTarget.reset();
-    });
-  </script>
+  <script src="forms.js"></script>
 </body>
 </html>

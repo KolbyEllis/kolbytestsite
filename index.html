@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <p class="test-banner">Test site. This page is for testing only. It is not a real property management company, and nothing you submit is saved or sent.</p>
+  <p class="test-banner">Test site. This page is for testing only. It is not a real property management company. Form submissions are sent to this site’s Netlify form inbox.</p>
   <header class="site-header">
     <a class="logo" href="index.html">Fieldstone</a>
     <nav>
@@ -68,7 +68,11 @@
     <section id="contact" class="panel">
       <h2>Ready to rent it out?</h2>
       <p class="lead">Send a few details and we’ll follow up with a rental estimate.</p>
-      <form id="inquiry">
+      <form name="rental-estimate" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="rental-estimate">
+        <p hidden>
+          <label>Don’t fill this out <input name="bot-field"></label>
+        </p>
         <label>
           Your name
           <input type="text" name="name" required>
@@ -86,7 +90,8 @@
           <textarea name="notes" rows="4"></textarea>
         </label>
         <button class="button" type="submit">Request an estimate</button>
-        <p id="thanks" class="thanks" hidden>Test only. This form does not send or save anything.</p>
+        <p class="thanks" data-thanks hidden>Sent. This test submission was delivered.</p>
+        <p class="form-error" data-error hidden>Could not send the form. Please try again.</p>
       </form>
     </section>
   </main>
@@ -96,12 +101,6 @@
     <p><a href="contact.html">Contact</a></p>
   </footer>
 
-  <script>
-    document.getElementById("inquiry").addEventListener("submit", function (event) {
-      event.preventDefault();
-      document.getElementById("thanks").hidden = false;
-      event.currentTarget.reset();
-    });
-  </script>
+  <script src="forms.js"></script>
 </body>
 </html>

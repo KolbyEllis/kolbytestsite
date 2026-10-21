@@ -191,9 +191,22 @@ textarea {
   border-radius: 10px;
 }
 
-.thanks {
+.thanks,
+.form-error {
   margin: 0;
+}
+
+.thanks {
   color: var(--accent-dark);
+}
+
+.form-error {
+  color: #8a3b12;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: wait;
 }
 
 footer {
